@@ -8,7 +8,7 @@ const { contactSchemas } = require("../../models");
 
 router.get("/", auth, ctrlWrapper(ctrl.getAllContacts));
 
-router.get("/:contactId", isValidId, ctrlWrapper(ctrl.getContactById));
+router.get("/:contactId", auth, isValidId, ctrlWrapper(ctrl.getContactById));
 
 router.post(
   "/",
@@ -17,12 +17,13 @@ router.post(
   ctrlWrapper(ctrl.addContact)
 );
 
-router.delete("/:contactId", isValidId, ctrlWrapper(ctrl.deleteContactById));
+router.delete("/:contactId", auth, isValidId, ctrlWrapper(ctrl.deleteContactById));
 
-router.put("/:contactId", isValidId, ctrlWrapper(ctrl.uptadeContactById));
+router.put("/:contactId", auth, isValidId, ctrlWrapper(ctrl.uptadeContactById));
 
 router.patch(
   "/:contactId/favorite",
+  auth,
   isValidId,
   validation(contactSchemas.updateFavoriteSchema),
   ctrlWrapper(ctrl.updateFavorite)
