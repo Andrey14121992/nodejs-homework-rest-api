@@ -5,9 +5,9 @@ const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = process.env;
 
 const auth = async (req, _, next) => {
-  const { authorization = "" } = req.headers;
+  const { authorization = ""} = req.headers;
   const [bearer, token] = authorization.split(" ");
-
+  
   try {
     if (bearer !== "Bearer") {
       throw new Unauthorized("Not authorized");
