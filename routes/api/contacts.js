@@ -6,7 +6,7 @@ const { auth, validation, isValidId } = require("../../middlewares");
 const { ctrlWrapper } = require("../../helpers");
 const { contactSchemas } = require("../../models");
 
-router.get("/", ctrlWrapper(ctrl.getAllContacts));
+router.get("/", auth, ctrlWrapper(ctrl.listContactsCtrl));
 
 router.get("/:contactId", isValidId, ctrlWrapper(ctrl.getContactById));
 
