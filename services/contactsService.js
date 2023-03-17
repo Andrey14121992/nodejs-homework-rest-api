@@ -8,6 +8,27 @@ const listContacts = async (user, skip, limit, favorite) => {
     .limit(limit);
 };
 
+const getContactById = async (contactId, user) => {
+  return await Contacts.find({ _id: contactId, owner: user });
+};
+
+const removeContact = async (contactId, user) => {
+  return await Contacts.findOneAndDelete({ _id: contactId, owner: user });
+};
+
+const updateStatusContact = async (contactId, user, body) => {
+  return await Contacts.findOneAndUpdate(
+    { _id: contactId, owner: user },
+    body,
+    {
+      new: true,
+    }
+  );
+};
+
 module.exports = {
   listContacts,
+  getContactById,
+  removeContact,
+  updateStatusContact
 };

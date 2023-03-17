@@ -8,17 +8,13 @@ const { contactSchemas } = require("../../models");
 
 router.get("/", auth, ctrlWrapper(ctrl.listContactsCtrl));
 
-router.get("/:contactId", isValidId, ctrlWrapper(ctrl.getContactById));
+router.get("/:contactId", isValidId, ctrlWrapper(ctrl.getContactByIdCtrl));
 
-router.post(
-  "/",
-  validation(contactSchemas.addContactsSchema),
-  ctrlWrapper(ctrl.addContact)
-);
+router.post( "/", validation(contactSchemas.addContactsSchema), ctrlWrapper(ctrl.addContact));
 
-router.delete("/:contactId", isValidId, ctrlWrapper(ctrl.deleteContactById));
+router.delete("/:contactId", isValidId, ctrlWrapper(ctrl.deleteContactByIdCtrl));
 
-router.put("/:contactId", validation(contactSchemas.addContactsSchema), isValidId, ctrlWrapper(ctrl.uptadeContactById));
+router.put("/:contactId", validation(contactSchemas.addContactsSchema), isValidId, ctrlWrapper(ctrl.uptadeContactByIdCtrl));
 
 router.patch(
   "/:contactId/favorite",
