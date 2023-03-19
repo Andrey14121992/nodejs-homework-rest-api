@@ -9,7 +9,7 @@ const listContacts = async (user, skip, limit, favorite) => {
 };
 
 const getContactById = async (contactId, user) => {
-  return await Contacts.find({ _id: contactId, owner: user });
+  return await Contacts.findOne({ _id: contactId, owner: user });
 };
 
 const removeContact = async (contactId, user) => {

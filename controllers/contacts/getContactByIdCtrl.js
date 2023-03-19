@@ -6,7 +6,7 @@ const getContactByIdCtrl = async (req, res) => {
 
   const contact = await getContactById(id, owner);
 
-  if (contact.length < 1) {
+  if (!contact) {
     return res.status(404).json({
       message: "Not found",
     });
