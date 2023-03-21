@@ -17,7 +17,7 @@ router.post(
   ctrlWrapper(ctrl.login)
 );
 
-router.get("/verify/:verificationToken", ctrlWrapper(ctrl.logout));
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmail));
 
 router.post(
   "/verify",
